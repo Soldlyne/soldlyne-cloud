@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { IBM_Plex_Mono, Schibsted_Grotesk } from 'next/font/google'
 import { ThemeProvider } from '@/components/layout/theme-provider'
+import { CloudAnalytics } from '@/components/cloud/cloud-analytics'
+import { isCloudService } from '@/components/cloud/cloud-service'
 import { Toaster } from '@/components/ui/sonner'
 import { publicUrl } from '@/lib/public-url'
 import './globals.css'
@@ -31,6 +33,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
           {children}
           <Toaster />
         </ThemeProvider>
+        {isCloudService() && <CloudAnalytics />}
       </body>
     </html>
   )
